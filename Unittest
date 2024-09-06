@@ -1,22 +1,15 @@
 import unittest
 
-class StringTestCase(unittest.TestCase):
-
-    def test_convert_to_uppercase(self):
-        test_string = 'foo'
+class UnitTestFramkwork(unittest.TestCase):
+    
+    def test_uppercase(self):
+        test_string = 'comp'
         result = test_string.upper()
-        self.assertEqual(result, 'FOO')
+        self.assertEqual(result,'COMP')
 
-    def test_check_if_all_uppercase(self):
-        self.assertTrue('FOO'.isupper())
-        self.assertFalse('Foo'.isupper())
-
-    def test_string_split_function(self):
-        test_string = 'hello world'
-        self.assertEqual(test_string.split(), ['hello', 'world'])
-        
-        with self.assertRaises(TypeError):
-            test_string.split(2)
+    def test_all_uppercase(self):
+        self.assertTrue('SCI'.isupper())
+        self.assertFalse('Sci'.isupper())
 
 if __name__ == '__main__':
     unittest.main()
