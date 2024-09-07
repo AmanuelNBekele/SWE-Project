@@ -1,1 +1,41 @@
+import tkinter as tk
 
+class SOS: 
+    def __init__(self, root) -> None:
+        self.root = root
+        self.root.title("SOS")
+
+        self.blue_player = tk.StringVar(value = 'Human')
+        self.blue_symbol = tk.StringVar(value = 'S')
+        
+        self.red_player = tk.StringVar(value='Human')
+        self.red_symbol = tk. StringVar(value = 'S')
+
+        self.record_game = tk.BooleanVar (value = False)
+
+        tk.Label(root, text = "Blue Player").grid(row = 0, column = 0, padx = 5, pady = 5)
+        tk.Radiobutton(root, text = "Human", variable = self.blue_player, value = 'Human').grid(row = 0, column = 1)
+        tk.Radiobutton(root, text = "Computer", variable = self.blue_player, value = 'Computer').grid(row = 0, column = 2)
+        tk.Radiobutton(root, text = "S", variable = self.blue_symbol, value = 'S').grid(row = 1, column = 1)
+        tk.Radiobutton(root, text = "O", variable = self.blue_symbol, value = 'O').grid(row = 1, column = 2)
+
+        tk.Label(root, text = "Red Player").grid(row = 2, column = 0, padx = 5, pady = 5)
+        tk.Radiobutton(root, text = "Human", variable = self.red_player, value = 'Human').grid(row = 2, column = 1)
+        tk.Radiobutton(root, text = "Computer", variable = self.red_player, value = 'Computer').grid(row = 2, column = 2)
+        tk.Radiobutton(root, text = "S", variable = self.red_symbol, value = 'S').grid(row = 3, column = 1)
+        tk.Radiobutton(root, text = "O", variable = self.red_symbol, value = 'O').grid(row = 3, column = 2)
+
+        tk.Checkbutton(root, text  = "Record Game", variable = self.record_game).grid(row = 4, column = 0, columnspan = 3, pady = 5)
+
+        self.board = tk.Frame(root)
+        self.board.grid(row = 5, column = 0, columnspan = 3, padx = 5, pady = 5)
+
+        self.squares = [[tk.Label(self.board, width=4, height=2, borderwidth=1, relief="solid") for _ in range(8)] for _ in range(8)]
+        for i in range(8):
+            for j in range(8):
+                self.squares[i][j].grid(row = i, column = j)
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = SOS(root)
+    root.mainloop()
